@@ -11,27 +11,28 @@ document.querySelector('#app').innerHTML = `
             <g id="nodos">
               <g id="neurona-cero">
                 <circle cx="4417.06" cy="1153" r="66.06" class="circle-style"/>
-                <text x="4405.383" y="1157.5" class="text-style">0...</text>
+                <text x="4405.383" y="1147.5" class="text-style">0 Entorno,</text>
+                <text x="4405.383" y="1167.5" class="text-style">Memoria Base</text>
               </g>
 
               <g id="neurona-uno">
                 <circle cx="4785" cy="1153" r="71" class="circle-style"/>
-                <text x="4773.383" y="1157.5" class="text-style">1...</text>
+                <text x="4773.383" y="1157.5" class="text-style">1 Input</text>
               </g>
 
               <g id="neurona-dos">
                 <circle cx="4932.5" cy="1457.5" r="42.5" class="circle-style"/>
-                <text x="4921.383" y="1461.5" class="text-style">2...</text>
+                <text x="4921.383" y="1461.5" class="text-style">2 Sesgo</text>
               </g>
 
               <g id="neurona-tres">
                 <circle cx="4950" cy="884" r="49" class="circle-style"/>
-                <text x="4938.383" y="888.5" class="text-style">3...</text>
+                <text x="4938.383" y="888.5" class="text-style">3 Activación</text>
               </g>
 
               <g id="neurona-cuatro">
                 <circle cx="5145.5" cy="1266.5" r="44.5" class="circle-style"/>
-                <text x="5134.383" y="1270.5" class="text-style">4...</text>
+                <text x="5134.383" y="1270.5" class="text-style">4 Output</text>
               </g>
             </g>
 
