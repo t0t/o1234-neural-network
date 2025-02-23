@@ -10,7 +10,7 @@
   --color-primary-hover: #535bf2;
   --color-text: rgba(255, 255, 255, 0.87);
   --color-text-secondary: #888;
-  --color-background: #242424;
+  --color-background: #656565;
   --color-surface: #1a1a1a;
   --color-border: transparent;
   --color-svg-stroke: #000;
@@ -27,6 +27,11 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --line-height-base: 1.5;
+
+  /* Tamaños específicos para SVG */
+  --svg-text-size-sm: 0.7rem;
+  --svg-text-size-md: 0.85rem;
+  --svg-text-size-lg: 1rem;
 
   /* Sistema de Espaciado */
   --spacing-xs: 0.25rem;
@@ -100,7 +105,7 @@ body {
 .circle-style {
   fill: var(--color-svg-fill);
   stroke: var(--color-svg-stroke);
-  stroke-width: var(--stroke-width-md);
+  stroke-width: var(--stroke-width-sm);
 }
 
 .rect-style {
@@ -109,16 +114,85 @@ body {
   stroke-width: var(--stroke-width-sm);
 }
 
+/* Estilo para paths y flechas */
 .path-style {
-  fill: none;
+  fill: var(--color-svg-stroke);
   stroke: var(--color-svg-stroke);
-  stroke-width: var(--stroke-width-md);
+  stroke-width: var(--stroke-width-sm);
 }
 
+/* Estilos de texto SVG */
 .text-style {
   font-family: var(--font-family-base);
-  font-size: var(--font-size-md);
-  fill: currentColor;
+  font-size: var(--svg-text-size-sm);
+  fill: var(--color-text);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+/* Sobrescribir estilos para textos */
+.path-style text {
+  fill: var(--color-text);
+  stroke: none;
+  font-size: var(--svg-text-size-sm);
+}
+
+/* Asegurar que los textos en grupos con path-style no tengan borde */
+g.path-style text {
+  fill: var(--color-text);
+  stroke: none;
+  font-size: var(--svg-text-size-sm);
+  text-anchor: middle;
+}
+
+/* Textos en contenedores negros */
+/* g.path-style path {
+  fill: var(--color-surface);
+} */
+
+/* Textos en rectángulos */
+.text-style[x*="4741.5"],  /* Texto en rectángulo de "Define importancia..." */
+.text-style[x*="4745"] /* Texto en rectángulo de "INFO ingresa..." */ {
+  font-size: var(--svg-text-size-sm);
+  text-anchor: start;
+}
+
+/* Textos en círculos */
+g[id^="cell-"] .text-style {
+  font-size: var(--svg-text-size-md);
+  text-anchor: middle;
+}
+
+/* Etiquetas de texto (Backpropagation, Tokenización, etc.) */
+text:not([transform]):not([x*="4741.5"]):not([x*="4745"]):not(g[id^="cell-"] text) {
+  font-family: var(--font-family-base);
+  font-size: var(--svg-text-size-md);
+  fill: var(--color-text);
+  font-weight: var(--font-weight-medium);
+  text-shadow: 1px 1px 2px var(--color-background);
+}
+
+/* Textos de anotaciones y flechas */
+text[transform] {
+  font-size: var(--svg-text-size-sm);
+}
+
+/* Estilos específicos para diferentes tipos de texto */
+.text-style[x*="4741.5"],  /* Texto en rectángulo de "Define importancia..." */
+.text-style[x*="4745.988"] /* Texto en rectángulo de "INFO ingresa..." */ {
+  font-size: var(--svg-text-size-sm);
+  text-anchor: start;
+}
+
+/* Textos en círculos */
+g[id^="cell-"] .text-style {
+  font-size: var(--svg-text-size-md);
+  text-anchor: middle;
+}
+
+/* Textos de anotaciones y etiquetas */
+text[transform] {
+  font-size: var(--svg-text-size-sm);
 }
 
 /* Estilos especiales SVG */
