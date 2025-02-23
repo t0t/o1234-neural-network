@@ -44,21 +44,16 @@ export class NeuralDiagram {
     }
 
     // Conecta dos neuronas por sus IDs
-    connectNeurons(id, fromId, toId, label = '', transform = '') {
-        const fromNeuron = this.neurons.find(n => n.id === fromId);
-        const toNeuron = this.neurons.find(n => n.id === toId);
-        
+    connectNeurons(id, fromNeuron, toNeuron, label = '', transform = '') {
         if (!fromNeuron || !toNeuron) {
-            console.error('Neuronas no encontradas:', fromId, toId);
+            console.error('Neuronas no encontradas');
             return null;
         }
 
         const connection = new Connection(
             id,
-            fromNeuron.x,
-            fromNeuron.y,
-            toNeuron.x,
-            toNeuron.y,
+            fromNeuron,
+            toNeuron,
             label,
             transform
         );
@@ -92,5 +87,4 @@ export class NeuralDiagram {
             </svg>
         `;
     }
-}
 }

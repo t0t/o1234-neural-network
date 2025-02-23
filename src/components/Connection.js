@@ -1,13 +1,16 @@
 export class Connection {
-    constructor(id, startX, startY, endX, endY, label = '', transform = '') {
+    constructor(id, fromNeuron, toNeuron, label = '', transform = '') {
         this.id = id;
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
+        this.fromNeuron = fromNeuron;
+        this.toNeuron = toNeuron;
         this.label = label;
         this.transform = transform;
     }
+
+    get startX() { return this.fromNeuron.x; }
+    get startY() { return this.fromNeuron.y; }
+    get endX() { return this.toNeuron.x; }
+    get endY() { return this.toNeuron.y; }
 
     calculateArrowPath() {
         const dx = this.endX - this.startX;
@@ -38,18 +41,21 @@ export class Connection {
         const midX = (this.startX + this.endX) / 2;
         const midY = (this.startY + this.endY) / 2;
         
-        // Offset perpendicular para el texto
-        const offset = 30;
+        // Reducir el offset perpendicular para el texto
+        const offset = 15; 
         const textX = midX - offset * Math.sin(angle);
         const textY = midY + offset * Math.cos(angle);
         
-        // Calcular la rotación del texto para que siga la dirección de la línea
+        // Calcular la rotación del texto
         let rotation = (angle * 180) / Math.PI;
         
-        // Ajustar la rotación para que el texto no esté al revés
+        // Ajustar la rotación para mantener el texto legible
         if (rotation > 90 || rotation < -90) {
             rotation += 180;
         }
+        
+        // Limitar la rotación máxima
+        rotation = Math.max(-45, Math.min(45, rotation));
         
         return {
             x: textX,
@@ -64,13 +70,11 @@ export class Connection {
         
         if (this.label) {
             if (this.transform) {
-                // Usar transformación personalizada si se proporciona
                 textElement = `
                     <text transform="${this.transform}" class="text-style">
                         ${this.label}
                     </text>`;
             } else {
-                // Usar posición calculada
                 const textPos = this.calculateTextPosition();
                 textElement = `
                     <text 
@@ -81,16 +85,16 @@ export class Connection {
                     >${this.label}</text>`;
             }
         }
-        
+
         return `
-            <g id="conexion-${this.id}">
-                <path 
-                    d="M${this.startX},${this.startY}L${this.endX},${this.endY}" 
-                    class="path-style"
+            <g class="connection" id="connection-${this.id}">
+                <path
+                    d="M${this.startX},${this.startY} L${this.endX},${this.endY}"
+                    class="connection-line"
                 />
-                <path 
-                    d="${arrowPath}" 
-                    class="path-style"
+                <path
+                    d="${arrowPath}"
+                    class="connection-arrow"
                 />
                 ${textElement}
             </g>
