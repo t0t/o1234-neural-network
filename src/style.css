@@ -102,79 +102,36 @@ body {
 }
 
 /* Estilos SVG */
-.circle-style {
-  fill: var(--color-svg-fill);
-  stroke: var(--color-svg-stroke);
-  stroke-width: var(--stroke-width-sm);
+.text-style, .circle-style, .connection-group {
+  cursor: move;
 }
 
-.rect-style {
-  fill: none;
-  stroke: var(--color-svg-stroke);
-  stroke-width: var(--stroke-width-sm);
-}
-
-/* Estilo para paths y flechas */
-.path-style {
-  fill: var(--color-svg-stroke);
-  stroke: var(--color-svg-stroke);
-  stroke-width: var(--stroke-width-sm);
-}
-
-/* Estilos de texto SVG */
 .text-style {
-  font-family: var(--font-family-base);
-  font-size: var(--svg-text-size-sm);
-  fill: var(--color-text);
-  text-anchor: middle;
-  dominant-baseline: middle;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  user-select: none;
 }
 
-/* Sobrescribir estilos para textos */
-.path-style text {
-  fill: var(--color-text);
-  stroke: none;
-  font-size: var(--svg-text-size-sm);
+.circle-style {
+  fill: white;
+  stroke: black;
+  stroke-width: 2;
 }
 
-/* Asegurar que los textos en grupos con path-style no tengan borde */
-g.path-style text {
-  fill: var(--color-text);
-  stroke: none;
-  font-size: var(--svg-text-size-sm);
-  text-anchor: middle;
+path.connection-line {
+  stroke: black;
+  stroke-width: 2;
+  fill: none;
 }
 
-/* Textos en contenedores negros */
-/* g.path-style path {
-  fill: var(--color-surface);
-} */
-
-/* Textos en rectángulos */
-.text-style[x*="4741.5"],  /* Texto en rectángulo de "Define importancia..." */
-.text-style[x*="4745"] /* Texto en rectángulo de "INFO ingresa..." */ {
-  font-size: var(--svg-text-size-sm);
-  text-anchor: start;
+path.connection-arrow {
+  fill: black;
+  stroke: black;
 }
 
-/* Textos en círculos */
-g[id^="cell-"] .text-style {
-  font-size: var(--svg-text-size-md);
-  text-anchor: middle;
-}
-
-/* Etiquetas de texto (Backpropagation, Tokenización, etc.) */
-text:not([transform]):not([x*="4741.5"]):not([x*="4745"]):not(g[id^="cell-"] text) {
-  font-family: var(--font-family-base);
-  font-size: var(--svg-text-size-md);
-  fill: var(--color-text);
-  font-weight: var(--font-weight-medium);
-  text-shadow: 1px 1px 2px var(--color-background);
-}
-
-/* Textos de anotaciones y flechas */
-text[transform] {
-  font-size: var(--svg-text-size-sm);
+.connection-group path {
+  stroke: black !important;
+  fill: black !important;
 }
 
 /* Estilos específicos para diferentes tipos de texto */
@@ -252,6 +209,13 @@ text[transform] {
 .text-style.process-label {
   font-size: 1rem;
   font-weight: var(--font-weight-medium);
+}
+
+/* Estilos para textos arrastrables */
+.circle-style {
+  fill: rgba(255, 192, 203, 0.5);
+  stroke: #666;
+  stroke-width: 2;
 }
 
 /* ==========================================================================
