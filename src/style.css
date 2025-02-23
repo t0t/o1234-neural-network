@@ -1,0 +1,164 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+}
+
+#svg-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  place-items: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #f7df1eaa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  position: fixed;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+  color: #888;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Estilos SVG */
+.circle-style {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.rect-style {
+  fill: none;
+}
+
+.path-style {
+  fill: none;
+  stroke: #000;
+  stroke-width: 5px;
+  stroke-miterlimit: 10;
+}
+
+.text-style {
+  font-family: Helvetica;
+  font-size: 14px;
+  fill: currentColor;
+}
+
+/* Estilos especiales */
+.path-style[stroke-dasharray] {
+  stroke: #b85450;
+}
+
+.path-style[stroke-width="10px"] {
+  stroke-width: 10px;
+}
+
+.path-style[stroke-width="4px"] {
+  stroke-width: 4px;
+}
+
+.text-style[font-size="7px"] {
+  font-size: 7px;
+}
+
+.text-style[font-size="11px"] {
+  font-size: 11px;
+}
+
+.text-style[font-size="23px"] {
+  font-size: 23px;
+}
+
+.fill-rule {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
