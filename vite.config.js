@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   // Configuración básica
+  base: '/o1234-neural-network/', // Nombre del repositorio
   build: {
-    outDir: './', // Esto especifica que los archivos de salida se generen en la raíz
+    outDir: 'docs', // GitHub Pages puede servir desde /docs
   },
 })
