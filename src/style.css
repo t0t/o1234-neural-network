@@ -1,62 +1,122 @@
+/*! style.css - v1.0.0 */
+
+/* ==========================================================================
+   Variables Globales
+   ========================================================================== */
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Sistema de Colores */
+  --color-primary: #646cff;
+  --color-primary-hover: #535bf2;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-text-secondary: #888;
+  --color-background: #242424;
+  --color-surface: #1a1a1a;
+  --color-border: transparent;
+  --color-svg-stroke: #000;
+  --color-svg-fill: #fff;
+  --color-svg-special: #b85450;
 
+  /* Sistema de Fuentes */
+  --font-family-base: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-family-svg: Helvetica, Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-line-height: 1.5;
+
+  /* Sistema de Tamaños de Fuente */
+  --font-size-xs: 7px;
+  --font-size-sm: 11px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 23px;
+  --font-size-xxl: 3.2em;
+
+  /* Sistema de Espaciado */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Sistema de Grid */
+  --grid-columns: 12;
+  --container-max-width: 100%;
+  --min-viewport-width: 320px;
+  --min-viewport-height: 100vh;
+
+  /* Sistema de Bordes y Sombras */
+  --border-radius: 8px;
+  --stroke-width-sm: 3px;
+  --stroke-width-md: 5px;
+  --stroke-width-lg: 10px;
+
+  /* Configuración Base */
+  font-family: var(--font-family-base);
+  line-height: var(--font-line-height);
+  font-weight: var(--font-weight-normal);
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--color-text);
+  background-color: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Layout Base */
+/* ==========================================================================
+   Layout Base - src/style.css:layout
+   ========================================================================== */
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  min-width: var(--min-viewport-width);
+  min-height: var(--min-viewport-height);
 }
 
 #app {
-  max-width: 100%;
+  max-width: var(--container-max-width);
   margin: 0;
-  padding: 0;
+  padding: var(--spacing-lg);
+
   text-align: center;
-  min-height: 100vh;
+  min-height: var(--min-viewport-height);
   display: flex;
   place-items: center;
 }
 
-/* Contenedor SVG */
+/* ==========================================================================
+   SVG Container - src/style.css:svg-container
+   ========================================================================== */
+
 #svg-container {
   width: 100%;
-  height: 100vh;
+  height: var(--min-viewport-height);
   display: flex;
   place-items: center;
-  background-color: var(--bg-color);
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer - src/style.css:footer
+   ========================================================================== */
+
 .read-the-docs {
-  position: fixed;
-  bottom: 1rem;
   width: 100%;
   text-align: center;
-  color: #888;
+  color: var(--color-text-secondary);
 }
 
-/* Estilos SVG */
+/* ==========================================================================
+   SVG Styles - src/style.css:svg-styles
+   ========================================================================== */
+
 .circle-style {
-  fill: #fff;
-  stroke: #000;
-  stroke-width: 3px;
+  fill: var(--color-svg-fill);
+  stroke: var(--color-svg-stroke);
+  stroke-width: var(--stroke-width-sm);
 }
 
 .rect-style {
@@ -65,40 +125,43 @@ body {
 
 .path-style {
   fill: none;
-  stroke: #000;
-  stroke-width: 5px;
+  stroke: var(--color-svg-stroke);
+  stroke-width: var(--stroke-width-md);
   stroke-miterlimit: 10;
 }
 
 .text-style {
-  font-family: Helvetica;
-  font-size: 14px;
+  font-family: var(--font-family-svg);
+  font-size: var(--font-size-base);
   fill: currentColor;
 }
 
-/* Estilos especiales SVG */
+/* ==========================================================================
+   SVG Special Styles - src/style.css:svg-special
+   ========================================================================== */
+
 .path-style[stroke-dasharray] {
-  stroke: #b85450;
+  stroke: var(--color-svg-special);
 }
 
 .path-style[stroke-width="10px"] {
-  stroke-width: 10px;
+  stroke-width: var(--stroke-width-lg);
 }
 
 .path-style[stroke-width="4px"] {
-  stroke-width: 4px;
+  stroke-width: calc(var(--stroke-width-md) - 1px);
 }
 
 .text-style[font-size="7px"] {
-  font-size: 7px;
+  font-size: var(--font-size-xs);
 }
 
 .text-style[font-size="11px"] {
-  font-size: 11px;
+  font-size: var(--font-size-sm);
 }
 
 .text-style[font-size="23px"] {
-  font-size: 23px;
+  font-size: var(--font-size-xl);
 }
 
 .fill-rule {
@@ -106,71 +169,74 @@ body {
   clip-rule: evenodd;
 }
 
-/* Tema claro/oscuro */
-:root {
-  --bg-color: #242424;
+/* ==========================================================================
+   Theme Support - src/style.css:theme
+   ========================================================================== */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #213547;
+    --color-background: #ffffff;
+    --color-surface: #f5f5f5;
+    --color-svg-stroke: #213547;
+  }
 }
 
+/* ==========================================================================
+   Components - src/style.css:components
+   ========================================================================== */
+
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--color-primary-hover);
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: var(--font-size-xxl);
   line-height: 1.1;
 }
 
 .logo {
   height: 6em;
-  padding: 1.5em;
+  padding: var(--spacing-md);
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--color-primary-hover));
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
 .card {
-  padding: 2em;
+  padding: var(--spacing-md);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-surface);
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-primary);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: #f5f5f5;
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
